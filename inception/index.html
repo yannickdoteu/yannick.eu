@@ -92,21 +92,6 @@
     
     
     <style>:root {--ghost-accent-color:#1c71d8;}</style>
-    <!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.yannick.eu/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
 </head>
 
 <body class="post-template is-head-left-logo has-classic-feed">
@@ -146,14 +131,14 @@
                         <h1 class="gh-article-title">Inception: virtualization, containerization, etcetera</h1>
                             <figure class="gh-article-image has-caption">
         <img
-            srcset="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+            srcset="../content/external/0005cc50f28e7ef8.jpg 300w,
                     https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
                     https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
                     https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
                     https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
                     https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
             sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDN8fGNvbnRhaW5lcnN8ZW58MHx8fHwxNzI0NDMyNDcyfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            src="../content/external/615f77f2b953c38e.jpg"
             alt="Inception: virtualization, containerization, etcetera"
         >
             <figcaption><span style="white-space:pre-wrap">Photo by </span><a href="https://unsplash.com/@frankiefoto?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">frank mckenna</span></a><span style="white-space:pre-wrap"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">Unsplash</span></a></figcaption>
@@ -161,7 +146,7 @@
                     </header>
 
                 <section class="gh-content gh-canvas">
-                    <p>I've always found the names of subjects of the 42 School quite on point. Sometimes funny or witty, but at least they always made sense. That's honestly not the case for 'Inception'. I've never understood the logic behind the choosing of this name. Maybe it has something to do with the fact that this project about virtualization needs to be evaluated entirely in a virtual machine? I think the more likely explanation is that while writing the curriculum the people who were doing it were suffering some sort of writer's fatigue. Just like I am right now, because after describing so many projects, it is hard to stay original I feel like. But I made this obligation to myself and therefore only I am to blame... </p><h1 id="what-i-learned">What I learned</h1><p>Anyway, I learned a lot while doing this project, but what I learned most I think is that DevOps isn't really something for me. 😅 I think it goes for most programmers, but the infrastructure, dependency management, configuration and all that just seem so super boring and unnecessary. I talked to one other student in my school who was very passionate about this project and about DevOps, which made me believe that I maybe should give it another chance and try harder to understand its purpose and to like it, but not anytime soon, I am afraid...</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://gitlab.com/yannickdoteu/inception?ref=yannick.eu"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Yannick / inception · GitLab</div><div class="kg-bookmark-description">GitLab.com</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" alt=""><span class="kg-bookmark-author">GitLab</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://gitlab.com/assets/twitter_card-570ddb06edf56a2312253c5872489847a0f385112ddbcd71ccfa1570febab5d2.jpg" alt="" onerror="this.style.display = 'none'"></div></a></figure>
+                    <p>I've always found the names of subjects of the 42 School quite on point. Sometimes funny or witty, but at least they always made sense. That's honestly not the case for 'Inception'. I've never understood the logic behind the choosing of this name. Maybe it has something to do with the fact that this project about virtualization needs to be evaluated entirely in a virtual machine? I think the more likely explanation is that while writing the curriculum the people who were doing it were suffering some sort of writer's fatigue. Just like I am right now, because after describing so many projects, it is hard to stay original I feel like. But I made this obligation to myself and therefore only I am to blame... </p><h1 id="what-i-learned">What I learned</h1><p>Anyway, I learned a lot while doing this project, but what I learned most I think is that DevOps isn't really something for me. 😅 I think it goes for most programmers, but the infrastructure, dependency management, configuration and all that just seem so super boring and unnecessary. I talked to one other student in my school who was very passionate about this project and about DevOps, which made me believe that I maybe should give it another chance and try harder to understand its purpose and to like it, but not anytime soon, I am afraid...</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://gitlab.com/yannickdoteu/inception?ref=yannick.eu"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Yannick / inception · GitLab</div><div class="kg-bookmark-description">GitLab.com</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="../content/external/0bdeda87be5f051b.png" alt=""><span class="kg-bookmark-author">GitLab</span></div></div><div class="kg-bookmark-thumbnail"><img src="../content/external/ad9d92ed9715f84c.jpg" alt="" onerror="this.style.display = 'none'"></div></a></figure>
                     <aside class="gh-article-meta">
                         <div class="gh-article-meta-inner">
                             <div class="gh-author-image-list instapaper_ignore">

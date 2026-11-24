@@ -92,21 +92,6 @@
     
     
     <style>:root {--ghost-accent-color:#1c71d8;}</style>
-    <!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.yannick.eu/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
 </head>
 
 <body class="post-template is-head-left-logo has-classic-feed">
@@ -146,14 +131,14 @@
                         <h1 class="gh-article-title">C++ modules: upgrading from C to C++ in weeks</h1>
                             <figure class="gh-article-image has-caption">
         <img
-            srcset="https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+            srcset="../content/external/c09d7153498b876e.jpg 300w,
                     https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
                     https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
                     https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
                     https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
                     https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
             sizes="(max-width: 1200px) 100vw, 1200px"
-            src="https://images.unsplash.com/photo-1527957557037-d079c24f24be?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDl8fGN8ZW58MHx8fHwxNzI0NjA4MzY2fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            src="../content/external/d208a2d21d98022d.jpg"
             alt="C++ modules: upgrading from C to C++ in weeks"
         >
             <figcaption><span style="white-space:pre-wrap">Photo by </span><a href="https://unsplash.com/@zakharyak?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">Maksym Zakharyak</span></a><span style="white-space:pre-wrap"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">Unsplash</span></a></figcaption>
@@ -161,7 +146,7 @@
                     </header>
 
                 <section class="gh-content gh-canvas">
-                    <p>One of the core philosophies of École 42 is that by focussing on the core principles of programming, in an environment where things are 'harder to do'. That's why the first 9 projects are to be written in C. By having this approach, the idea is that you are able to quickly pick up any other language or framework, because they are all based on, or translatable to the same fundamental principles.</p><p>To demonstrate this during the Common Core, you get a kind-of second 'mini piscine' about Ojbect Oriented Programming that is C++.</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💁</div><div class="kg-callout-text">Still working on the last bits of this project, but you can watch along while I am finishing it!</div></div><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://gitlab.com/yannickdoteu/cpp?ref=yannick.eu"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Yannick / cpps · GitLab</div><div class="kg-bookmark-description">GitLab.com</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" alt=""><span class="kg-bookmark-author">GitLab</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://gitlab.com/assets/twitter_card-570ddb06edf56a2312253c5872489847a0f385112ddbcd71ccfa1570febab5d2.jpg" alt=""></div></a></figure>
+                    <p>One of the core philosophies of École 42 is that by focussing on the core principles of programming, in an environment where things are 'harder to do'. That's why the first 9 projects are to be written in C. By having this approach, the idea is that you are able to quickly pick up any other language or framework, because they are all based on, or translatable to the same fundamental principles.</p><p>To demonstrate this during the Common Core, you get a kind-of second 'mini piscine' about Ojbect Oriented Programming that is C++.</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💁</div><div class="kg-callout-text">Still working on the last bits of this project, but you can watch along while I am finishing it!</div></div><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://gitlab.com/yannickdoteu/cpp?ref=yannick.eu"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Yannick / cpps · GitLab</div><div class="kg-bookmark-description">GitLab.com</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="../content/external/0bdeda87be5f051b.png" alt=""><span class="kg-bookmark-author">GitLab</span></div></div><div class="kg-bookmark-thumbnail"><img src="../content/external/ad9d92ed9715f84c.jpg" alt=""></div></a></figure>
                     <aside class="gh-article-meta">
                         <div class="gh-article-meta-inner">
                             <div class="gh-author-image-list instapaper_ignore">
