@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetPractice: overlapping subnets are nasty!</title>
+    <link rel="stylesheet" href="../assets/built/screen.css">
+
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="canonical" href="https://yannick.eu/netpractice/">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="yannick.eu">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="NetPractice: overlapping subnets are nasty!">
+    <meta property="og:description" content="NetPractice is a 42 School project about networking! That exclamation mark can be read with a hint of sarcasm, because most of the people I know (myself included) aren&#x27;t the greatest fans of this subject. It is complicated, a bit abstract and unless it&#x27;s your job most programmers">
+    <meta property="og:url" content="https://yannick.eu/netpractice/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2024-01-17T10:51:00.000Z">
+    <meta property="article:modified_time" content="2025-06-11T08:28:21.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NetPractice: overlapping subnets are nasty!">
+    <meta name="twitter:description" content="NetPractice is a 42 School project about networking! That exclamation mark can be read with a hint of sarcasm, because most of the people I know (myself included) aren&#x27;t the greatest fans of this subject. It is complicated, a bit abstract and unless it&#x27;s your job most programmers">
+    <meta name="twitter:url" content="https://yannick.eu/netpractice/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Yannick">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "yannick.eu",
+        "url": "https://yannick.eu/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://yannick.eu/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Yannick",
+        "url": "https://yannick.eu/author/yannick/",
+        "sameAs": []
+    },
+    "headline": "NetPractice: overlapping subnets are nasty!",
+    "url": "https://yannick.eu/netpractice/",
+    "datePublished": "2024-01-17T10:51:00.000Z",
+    "dateModified": "2025-06-11T08:28:21.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1545987796-200677ee1011?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 800
+    },
+    "description": "NetPractice is a 42 School project about networking! That exclamation mark can be read with a hint of sarcasm, because most of the people I know (myself included) aren't the greatest fans of this subject. It is complicated, a bit abstract and unless it's your job most programmers barely deal with it anymore nowadays. However, it is hugely important if you want at least some basic knowledge about how the internet works. And well the internet, as you might know, is HUGE.\n\n\nWhat I learned\n\nSo all a",
+    "mainEntityOfPage": "https://yannick.eu/netpractice/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.78">
+    <script defer src="../public/cards.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css">
+    
+    
+    <style>:root {--ghost-accent-color:#1c71d8;}</style>
+    <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analytics.yannick.eu/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</head>
+
+<body class="post-template is-head-left-logo has-classic-feed">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="https://yannick.eu">
+                            yannick.eu
+                    </a>
+                </div>
+                
+                <button class="gh-burger" aria-label="Toggle menu"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-contact"><a href="../contact-me/">contact</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    
+                    
+            </div>
+        </div>
+    </header>
+
+    
+<main class="gh-main gh-outer">
+    <div class="gh-inner">
+            <article class="gh-article post">
+                    <header class="gh-article-header gh-canvas">
+                        <h1 class="gh-article-title">NetPractice: overlapping subnets are nasty!</h1>
+                            <figure class="gh-article-image has-caption">
+        <img
+            srcset="https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;720 720w,
+                    https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+                    https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200 1200w,
+                    https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w,
+                    https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="https://images.unsplash.com/photo-1545987796-200677ee1011?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGdsb2JhbCUyMG5ldHdvcmt8ZW58MHx8fHwxNzI0NDA2NTEwfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1200"
+            alt="NetPractice: overlapping subnets are nasty!"
+        >
+            <figcaption><span style="white-space:pre-wrap">Photo by </span><a href="https://unsplash.com/@alinnnaaaa?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">Alina Grubnyak</span></a><span style="white-space:pre-wrap"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space:pre-wrap">Unsplash</span></a></figcaption>
+    </figure>
+                    </header>
+
+                <section class="gh-content gh-canvas">
+                    <p>NetPractice is a 42 School project about networking! That exclamation mark can be read with a hint of sarcasm, because most of the people I know (myself included) aren't the greatest fans of this subject. It is complicated, a bit abstract and unless it's your job most programmers barely deal with it anymore nowadays. However, it is hugely important if you want at least some basic knowledge about how the internet works. And well the internet, as you might know, is HUGE.</p><h1 id="what-i-learned">What I learned</h1><p>So all and all I am happy that I had the opportunity to discover the the basic principles of the TCP/IP protocol, while just messing around a bit with IP-addresses, interfaces, netmasks, subnets, routing tables, routers and switches – all virtually, that is. For me it brought the realization that the internet is just a protocol (and wires) and that any computer that you connect to it and let it speak the protocol actually IS part of the internet. It sounds pretty obvious when I say it like this, but this project really made me realize it on another level.</p><p>Because what it really means is that because of its de-central nature, nobody owns the internet and therefore hasn't been able to block the development of it. It makes me doubt that without these properties it wouldn't have come to existence at all, at least not as we know it today. I say this because it feels like an exceptional phenomenon in this time where the world seems getting more polarized and divided. However, you could also argue that the cultural impact of the internet seems to have had a contribution to these negative developments, paradoxically. But well that's maybe another discussion...</p>
+                    <aside class="gh-article-meta">
+                        <div class="gh-article-meta-inner">
+                            <div class="gh-author-image-list instapaper_ignore">
+                                    <a class="gh-author-image" href="../author/yannick/">
+                                            <div class="gh-author-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="68" height="68"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</div>
+                                    </a>
+                            </div>
+                            <div class="gh-article-meta-wrapper">
+                                <div class="gh-author-name-list">
+                                    <a href="../author/yannick/">Yannick</a>
+                                </div>
+                                <time class="gh-article-date" datetime="2024-01-17">17 Jan 2024</time>
+                            </div>
+                        </div>
+                    </aside>
+                </section>
+
+                    <footer class="gh-article-footer gh-canvas">
+                    <nav class="gh-navigation">
+                        <div class="gh-navigation-previous">
+                                <a class="gh-navigation-link" href="../cub3d/">← Previous</a>
+                        </div>
+
+                        <div class="gh-navigation-middle"></div>
+
+                        <div class="gh-navigation-next">
+                                <a class="gh-navigation-link" href="../webserv/">Next →</a>
+                        </div>
+                    </nav>
+                </footer>
+            </article>
+    </div>
+</main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-terms-of-service"><a href="../terms/">Terms of Service</a></li>
+    <li class="nav-privacy-policy"><a href="../privacy/">Privacy Policy</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    yannick.eu © 2026. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/built/main.min.js"></script>
+
+<a rel="me" href="https://mastodon.green/@yannickdoteu"></a>
+
+</body>
+
+</html>
